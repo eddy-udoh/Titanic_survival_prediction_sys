@@ -1,1 +1,11 @@
-https://titanic-survival-46i9.onrender.com
+==========================================================
+        TITANIC SURVIVAL PREDICTION SYSTEM
+==========================================================
+Developer:      Edidiongabasi Inyangudoh
+Matric No:      22CG031868
+Program:        Computer Science
+Environment:    Python 3.10 / Flask / TensorFlow-CPU
+
+Status:         Deployment Successful
+Live Link:      https://house-price-prediction-sys.onrender.com/
+==========================================================
