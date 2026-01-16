@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Probability Analysis</title>
+    <style>
+        :root {
+            --primary-purple: #4a148c;
+            --light-purple: #7c43bd;
+            --dark-purple: #12005e;
+            --bg-color: #f3e5f5;
+            --text-main: #212121;
+            --text-white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 40px 20px; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container { 
+            background: white; 
+            padding: 40px; 
+            max-width: 450px; 
+            margin: auto; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 8px solid var(--primary-purple);
+        }
+
+        h2 { 
+            text-align: left; 
+            color: var(--dark-purple); 
+            margin-top: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.3em;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: var(--primary-purple);
+        }
+
+        input, select { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 15px; 
+            border: 2px solid #e0e0e0; 
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #fff;
+            font-size: 15px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--light-purple);
+        }
+
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            background: var(--primary-purple); 
+            color: var(--text-white); 
+            border: none; 
+            border-radius: 6px;
+            font-size: 16px; 
+            font-weight: bold;
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        button:hover { 
+            background: var(--dark-purple); 
+            box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3);
+        }
+
+        .result-heading {
+            text-align: center;
+            color: var(--dark-purple);
+            margin-top: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-purple);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Survival Analysis Model</h2>
+        <p>Enter passenger demographics to calculate survival probability based on historical data.</p>
+        
+        <form method="POST">
+            <label>Socio-Economic Class</label>
+            <select name="Pclass">
+                <option value="1">Upper Class (1st)</option>
+                <option value="2">Middle Class (2nd)</option>
+                <option value="3">Lower Class (3rd)</option>
+            </select>
+
+            <label>Gender Identity</label>
+            <select name="Sex">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+
+            <label>Age (Years)</label>
+            <input type="number" name="Age" placeholder="e.g. 28" required>
+
+            <label>Siblings/Spouses Aboard</label>
+            <input type="number" name="SibSp" value="0">
+
+            <label>Parents/Children Aboard</label>
+            <input type="number" name="Parch" value="0">
+
+            <label>Fare Paid (USD)</label>
+            <input type="number" name="Fare" placeholder="e.g. 32.50" required>
+
+            <button type="submit">Execute Prediction</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result-heading">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
